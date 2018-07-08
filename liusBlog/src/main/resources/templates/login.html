@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="~{fragments/header :: header}"></head>
+<body>
+<!-- page content -->
+<div class="container blog-content-container">
+    <form th:action="@{/login}" method="post">
+        <h2>请登录</h2>
+        <div class="form-group col-md-5">
+            <lable for="username" class="col-form-lable">账号</lable>
+            <input type="text" class="form-control" id="username" name="username" maxlength="50">
+        </div>
+
+        <div class="form-group col-md-5">
+            <lable for="password" class="col-form-lable">密码</lable>
+            <input type="password" class="form-control" id="password" name="password" maxlength="50">
+        </div>
+        <div class="form-group col-md-5">
+            <input type="checkbox" name="remember-me">记住我
+        </div>
+
+        <div class="form-group col-md-5">
+            <button type="submit" class="btn btn-primary">登录</button>
+        </div>
+        <div class="col-md-5" th:if="${loginError}">
+            <p class="blog-lable-error" th:text="${errMsg}"></p>
+        </div>
+    </form>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>
